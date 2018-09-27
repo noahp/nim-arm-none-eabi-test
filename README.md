@@ -31,12 +31,19 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # build command
 Run this:
 ```bash
-➜ nim cc --app:staticlib test.nim
+# build a staticlib and generate a header
+➜ nim c --app:staticlib --header:test.h test.nim
 Hint: used config file '/etc/nim.cfg' [Conf]
-Hint: used config file '/home/noah/dev/test/nimtest/nim.cfg' [Conf]
+Hint: used config file '/home/noah/dev/github/nimtest/nim.cfg' [Conf]
 Hint: system [Processing]
 Hint: test [Processing]
+Hint: arm-none-eabi-gcc -c  -w -O3 -g -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-common -ffunction-sections -fdata-sections -std=c11 -g3 -O0  -I/usr/lib/nim -o /home/noah/dev/github/nimtest/nimcache/test.o /home/noah/dev/github/nimtest/nimcache/test.c [Exec]
+Hint: arm-none-eabi-gcc -c  -w -O3 -g -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-common -ffunction-sections -fdata-sections -std=c11 -g3 -O0  -I/usr/lib/nim -o /home/noah/dev/github/nimtest/nimcache/stdlib_system.o /home/noah/dev/github/nimtest/nimcache/stdlib_system.c [Exec]
 Hint:  [Link]
-Hint: operation successful (7727 lines compiled; 0.041 sec total; 7.344MiB peakmem; Debug Build) [SuccessX]
+Hint: operation successful (7727 lines compiled; 0.179 sec total; 7.344MiB peakmem; Debug Build) [SuccessX]
+
 ```
-Should emit a `libtest.a`.
+Should emit a `libtest.a` and `nimcache/test.h`.
+
+# *TODO* link into a binary
+TODO try linking this into a cortex m4 .elf!

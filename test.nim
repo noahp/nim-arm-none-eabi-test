@@ -1,2 +1,2 @@
-proc multiply*(a: int, b: int): int =
+proc multiply*(a: cint, b: cint): cint {.exportc.}=
     a * b
